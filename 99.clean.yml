@@ -53,6 +53,11 @@
     shell: "systemctl stop docker"
     ignore_errors: true
 
+  - name: remove docker
+    yum:
+      name: docker
+      state: absent
+
   # 因为calico-kube-controller使用了host网络，相当于使用了docker -net=host，需要
   # 卸载 /var/run/docker/netns/default
   - name: 卸载docker 相关fs1
