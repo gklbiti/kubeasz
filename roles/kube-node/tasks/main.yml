@@ -49,6 +49,18 @@
   tags: upgrade_k8s, restart_node
 
 ##-------kube-proxy部分----------------
+- name: 安装ipvsadm
+  yum:
+    name: ipvsadm
+    state: latest
+
+- name: 准备ipvs依赖包
+  shell: "modprobe -- ip_vs;
+          modprobe -- ip_vs_rr;
+          modprobe -- ip_vs_wrr;
+          modprobe -- ip_vs_sh;
+          modprobe -- nf_conntrack_ipv4"
+
 - name: 安装kube-proxy.kubeconfig配置文件
   copy: src=/etc/kubernetes/kube-proxy.kubeconfig dest=/etc/kubernetes/kube-proxy.kubeconfig
 

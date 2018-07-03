@@ -25,6 +25,11 @@
     - "/etc/systemd/system/kube-proxy.service"
     - "/opt/kube/kube-system/"
 
+  - name: remove ipvsadm
+    yum:
+      name: ipvsadm
+      state: absent
+
 # 清理 kube-master 相关
 - hosts:
   - kube-master
