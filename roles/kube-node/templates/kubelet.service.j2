@@ -9,6 +9,7 @@ WorkingDirectory=/var/lib/kubelet
 #--pod-infra-container-image=registry.access.redhat.com/rhel7/pod-infrastructure:latest
 ExecStart={{ bin_dir }}/kubelet \
   --address={{ inventory_hostname }} \
+  --cgroup-driver=systemd \
   --hostname-override={{ inventory_hostname }} \
   --pod-infra-container-image=mirrorgooglecontainers/pause-amd64:3.1 \
   --experimental-bootstrap-kubeconfig=/etc/kubernetes/bootstrap.kubeconfig \
